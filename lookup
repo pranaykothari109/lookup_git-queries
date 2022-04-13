@@ -1,0 +1,117 @@
+//partially working
+db.company_drives.aggregate(
+    {
+        $lookup: {
+              from: "users",
+              let : {
+                    companies: '$companies_applied'  
+              },
+              pipeline: [
+                    // {
+                    //         $unwind: '$companies_applied'
+                    // },
+                    {
+                        $match:{
+                            $expr: {
+                            $eq:[{
+                                $toString: "$Company"
+                            },
+                            {
+                                $toString: "$$companies"
+                            }]
+                        }
+                        }
+                        
+                    }
+                    // {
+                    //     $match:{
+                    //       $expr:{
+                    //           $eq: [ '$Company', '$$companies' ]
+                    //       }
+                    //     }
+                    // }
+                ],
+              as: "Applied Students"
+             }
+    }
+)
+
+// db.company_drives.aggregate([
+//     {
+//         $lookup: {
+//               from: "users",
+//               localField: "Company",
+//               foreignField: "companies_applied",
+//               as: "Applied Companies"
+//              }
+//     },
+//     {
+//         $unwind: $companies_applied
+//     }
+    
+//     ])
+
+
+
+
+// db.users.aggregate(
+//     {
+//         $lookup: {
+//             from: 'company_drives',
+//             let : {
+//                 companies_applied: '$companies_applied'
+//             },
+//             pipeline: [{
+//                 $match: {
+//                     $expr: {
+//                         $in: [ '$Company', '$$companies_applied']
+//                     }
+//                 } 
+//             }],
+//             as: 'companies'
+//         }
+//     }, 
+//     {
+//         $group: {
+//             _id:' $companies.Company',
+//             applied_students: '$name'
+//         }
+//     }
+// )
+
+
+//  db.demo396.aggregate([
+// ...    { "$lookup": {
+// ...       "from": "demo395",
+// ...       "let": { "details": "$details" },
+// ...       "pipeline": [
+// ...          { "$match": { "$expr": { "$in": [ "$_id", "$$details" ] } } }
+// ...       ],
+// ...       "as": "output"
+// ...    }}
+// ... ])
+
+
+
+   
+// db.company_drives.aggregate(
+//     {
+//         $lookup: {
+//             from: 'users',
+//           pipeline: [
+//                 {
+//                     $unwind: '$companies_applied'
+//                 },
+//                 // {
+//                 //     $match: {
+//                 //         $expr: {
+//                 //             $eq: ['$Company', '$companies_applied']
+//                 //         }
+//                 //     }
+//                 // }
+//             ],
+//             as: 'companies'
+//         }
+//     },
+// )
+   

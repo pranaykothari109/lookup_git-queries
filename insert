@@ -1,0 +1,44 @@
+db.companies_drives.insertMany([
+{
+	"Company" : "IBM",
+	"Drive_date" : ISODate("2020-10-17T05:30:00.000+05:30")
+},
+{
+	"Company" : "Google",
+	"Drive_date" : ISODate("2020-10-12T05:30:00.000+05:30")
+},
+{
+	"Company" : "Apple",
+	"Drive_date" : ISODate("2020-10-07T05:30:00.000+05:30")
+},
+{
+	"Company" : "Wipro",
+	"Drive_date" : ISODate("2020-10-17T05:30:00.000+05:30")
+},
+{
+	"Company" : "TCS",
+	"Drive_date" : ISODate("2020-10-15T05:30:00.000+05:30")
+},
+{
+	"Company" : "Cognizant",
+	"Drive_date" : ISODate("2020-10-22T05:30:00.000+05:30")
+},
+{
+	"Company" : "Adobe",
+	"Drive_date" : ISODate("2020-09-22T05:30:00.000+05:30")
+}
+])
+
+
+
+db.users.insertMany([
+{
+	"name" : "kumar",
+	"companies_applied" : [ "Apple", "TCS", "Cognizant" ]
+},
+
+{
+	"name" : "amol",
+	"companies_applied" : [ "Wipro", "IBM", "TCS" ]
+}
+])
